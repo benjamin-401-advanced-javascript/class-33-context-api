@@ -4,14 +4,17 @@ import { CounterContext } from '../counter-context';
 
 
 const Incrementer = () => {
-  const context = useContext(CounterContext);
 
   const style = {
     height: '3em',
   }
 
   return (
-    <button style={style} onClick={() => context.increment()}> + </button>
+    <CounterContext.Consumer>
+      {context => (
+        <button style={style} onClick={() => context.increment()}> + </button>
+      )}
+    </CounterContext.Consumer>
   )
 
 }
