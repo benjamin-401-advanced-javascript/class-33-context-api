@@ -1,38 +1,43 @@
-import React, {useState} from 'react';
+import React, { useContext } from 'react';
 
-const Count = () => {
+import { CounterContext } from '../counter-context';
 
-  const [count, setCount] = useState(0);
+const styles = {
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '40%',
+  },
+  counter: {
+    display: 'inline-block',
+    fontSize: '1em',
+    border: '2px solid #444',
+    borderRadius: '50%',
+    lineHeight: '5em',
+    textAlign: 'center',
+    width: '5em',
+  },
+  button: {
+    height: '3em',
+  },
+}
 
-  const styles = {
-    container: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-evenly',
-      width: '40%',
-    },
-    counter: {
-      display: 'inline-block',
-      fontSize: '1em',
-      border: '2px solid #444',
-      borderRadius: '50%',
-      lineHeight: '5em',
-      textAlign: 'center',
-      width: '5em',
-    },
-    button: {
-      height: '3em',
-    },
-  };
+class Count extends React.Component {
 
-  return (
-    <div style={styles.container}>
-      <button style={styles.button} onClick={() => setCount(count-1)}> - </button>
-      <span style={styles.counter}>{count}</span>
-      <button style={styles.button} onClick={() => setCount(count+1)}> + </button>
-    </div>
-  );
-};
+  render() {
+    let context = this.context;
+    return (
+      <div style={styles.container}>
+        <button style={styles.button} onClick={() => context.decrement()}> - </button>
+        <span style={styles.counter}>{context.count}</span>
+        <button style={styles.button} onClick={() => context.increment()}> + </button>
+      </div>
+    );
+
+  }
+}
+Count.contextType = CounterContext;
 
 export default Count;
