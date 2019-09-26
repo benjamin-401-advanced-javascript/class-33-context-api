@@ -1,16 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { CounterContext } from '../counter-context';
 
-const styles = {
-  container: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    width: '40%',
-  },
-  counter: {
+const style = {
     display: 'inline-block',
     fontSize: '1em',
     border: '2px solid #444',
@@ -18,22 +10,15 @@ const styles = {
     lineHeight: '5em',
     textAlign: 'center',
     width: '5em',
-  },
-  button: {
-    height: '3em',
-  },
 }
 
 class Count extends React.Component {
 
   render() {
     let context = this.context;
+
     return (
-      <div style={styles.container}>
-        <button style={styles.button} onClick={() => context.decrement()}> - </button>
-        <span style={styles.counter}>{context.count}</span>
-        <button style={styles.button} onClick={() => context.increment()}> + </button>
-      </div>
+        <span style={style}>{context.count}</span>
     );
 
   }

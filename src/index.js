@@ -9,7 +9,7 @@ class Main extends React.Component {
     return (
       <>
         <CounterContext>
-          <App />;
+          <App />
         </CounterContext>
       </>
     )
